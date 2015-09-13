@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Slidder</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+    <script type="text/javascript">
+        var IS_DEBUG = false;
+
+        if (navigator.platform == "Linux armv7l"){
+            IS_DEBUG = false;
+            console.log('running in chromecast...');
+        }
+        else {
+            IS_DEBUG = true;
+            console.log('running in debug mode...');
+        }
+    </script>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script> 
+    <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+    <script src="js/slidder.js"></script>
+
+    <script type="text/javascript">
+        window.onload = onLoad;
+
+        function sleep(millis, callback) {
+            setTimeout(function(){ callback(); }, millis);
+        }
+
+        function loadFirstPage(){
+            impress().goto('SideA');
+        };
+
+        function onLoad() {
+            window.engine = new cast.KHC();
+            sleep(1500, loadFirstPage);
+        }
+    </script>
+
+
+</head>
+
+<body class="impress-supported">
+<div id="impress">
+    <div
+        class="step title"
+        data-x="0"
+        data-y="0"
+        id="title">
+        <span class='headnote'>2014 Trend Micro Device App Contest</span>
+        <h1>Slidder</h1>
+        <span class="footnote">CVE-2014-0160: Chuck - Jarron - Reverb</span>
+    </div>
+
+    <div 
+        class="step slide"
+        data-x="0"
+        data-y="1000" 
+        style="width: 900px; height: 675px;"
+        id="SideA">
+    </div>
+<!--     <div 
+        class="step slide"
+        data-x="0"
+        data-y="1000" 
+        style="width: 900px; height: 675px;"
+        id="SideB">
+    </div> -->
+</div>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
